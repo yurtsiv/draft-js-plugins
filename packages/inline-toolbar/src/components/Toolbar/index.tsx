@@ -11,18 +11,12 @@ import {
 import { InlineToolbarPluginStore } from '../../';
 import { InlineToolbarPluginTheme } from '../../theme';
 
-interface OverrideContentProps {
-  getEditorState: () => EditorState;
-  setEditorState: (editorState: EditorState) => void;
-  onOverrideContent: (content: ComponentType<unknown> | undefined) => void;
-}
-
 export interface ToolbarChildrenProps {
   theme: DraftJsButtonTheme;
   getEditorState: () => EditorState;
   setEditorState: (editorState: EditorState) => void;
   onOverrideContent: (
-    content: ComponentType<OverrideContentProps> | undefined
+    content: ComponentType<ToolbarChildrenProps> | undefined
   ) => void;
 }
 
@@ -76,7 +70,7 @@ export default class Toolbar extends React.Component<ToolbarProps> {
    * @param {Component} overrideContent
    */
   onOverrideContent = (
-    overrideContent: ComponentType<OverrideContentProps> | undefined
+    overrideContent: ComponentType<ToolbarChildrenProps> | undefined
   ): void => {
     this.setState({ overrideContent });
   };
